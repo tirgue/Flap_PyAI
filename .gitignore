@@ -1,0 +1,4 @@
+
+.vscode/
+*.pyc
+lib/Py_AI/neuron_network/test.py
