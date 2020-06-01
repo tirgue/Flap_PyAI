@@ -12,6 +12,7 @@ pipes = [Pipe()]
 
 background = pygame.image.load('lib/Flap/BG.jpg')
 floor = pygame.image.load('lib/Flap/BG_floor.png')
+floor_x = 0
 
 clock = pygame.time.Clock()
 
@@ -43,7 +44,14 @@ for gen in range(10000):
             pipe.move()
             pipe.draw(screen)
 
-        screen.blit(floor, (0,0))
+        screen.blit(floor, (floor_x,0))
+        screen.blit(floor, (floor_x + 400,0))
+        pygame.draw.rect(screen, (0,0,0), (400,0,400,600))
+
+        if floor_x < -400:
+            floor_x = 400+floor_x
+
+        floor_x -= 3
 
         birds_alive = 0
         

@@ -41,7 +41,7 @@ class Bird:
 
     def think(self, pipe):
         P_TOP = pipe.y_top - self.y
-        P_BOT = pipe.y_bottom - self.y
+        P_BOT = self.y - pipe.y_bottom 
         D_PIPE = pipe.x + pipe.width - self.x
 
         # P_TOP = NeuronNetwork.normalise(P_TOP, 2)
@@ -82,6 +82,9 @@ class Bird:
 
                 if layer == self.brain.neuron_network.layers[0]: 
                     r = Sigmoid(neuron[0]) * 255
+
+                elif layer == self.brain.neuron_network.layers[-1]: 
+                    r = np.round(neuron[0]) * 255
 
                 else :
                     r = neuron[0] * 255
